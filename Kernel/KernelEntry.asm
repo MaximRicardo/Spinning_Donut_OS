@@ -1,4 +1,5 @@
 section .text
+global _start
 
 [bits 32]
 [extern KernelMain]
@@ -6,6 +7,8 @@ section .text
 [extern printf]
 [extern MemoryMap_Load]
 [extern MemoryMap_GetTopOfLargestFreeEntry]
+
+_start:
 
     push ebp
     mov ebp, esp
