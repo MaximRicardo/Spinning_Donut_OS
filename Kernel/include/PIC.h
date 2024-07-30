@@ -1,6 +1,7 @@
 #pragma once
 
-#include "SizedInts.h"
+#include "stdint.h"
+
 #include "LowLevelIO.h"
 
 #define PIC1            0x20    /* IO base address for master PIC */

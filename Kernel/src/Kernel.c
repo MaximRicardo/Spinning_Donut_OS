@@ -1,4 +1,5 @@
-#include "SizedInts.h"
+#include <stdint.h>
+
 #include "LowLevelIO.h"
 #include "MemFuncs.h"
 #include "Screen.h"

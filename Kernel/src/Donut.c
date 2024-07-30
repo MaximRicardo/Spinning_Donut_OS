@@ -1,6 +1,7 @@
+#include <stdint.h>
+
 #include "Print.h"
 #include "MemFuncs.h"
-#include "SizedInts.h"
 #include "Donut.h"
 
 #define m_DONUT_HOLE_RADIUS (3.f)

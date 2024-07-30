@@ -1,7 +1,9 @@
 #include <stdarg.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+
 #include "Print.h"
-#include "Bool.h"
-#include "SizedInts.h"
 #include "LowLevelIO.h"
 #include "Chars.h"
 #include "Screen.h"

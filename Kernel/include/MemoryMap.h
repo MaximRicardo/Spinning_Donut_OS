@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 struct MemoryMapEntry {
 
     uint32_t baseLo;    /* Address of the region */

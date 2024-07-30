@@ -1,4 +1,5 @@
-#include "SizedInts.h"
+#include <stdint.h>
+#include <stddef.h>
 
 extern void InterruptDefault();
 extern void Interrupt0();
