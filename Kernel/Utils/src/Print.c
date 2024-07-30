@@ -107,7 +107,7 @@ newLine - if true, print a new line after the string, else do not
 */
 static int putsWithNewLineOption(char* str, bool newLine) {
 
-    if (str == NULL) return;
+    if (str == NULL) return 0;
 
     size_t i;   /* Index in the string */
     
