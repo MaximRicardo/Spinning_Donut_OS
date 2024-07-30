@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p Binaries
+
 nasm Boot/Boot.asm -f bin -o Binaries/Boot.bin
 
 nasm Kernel/KernelEntry.asm -f elf -o Binaries/KernelEntry.o
