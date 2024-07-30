@@ -167,7 +167,9 @@ void Donut() {
         }
 
         puts("Donut");
-        if (fmodf(secCount, 1.f) < 0.01f) printf("fps = %d        \n", (int)fps);
+        if (fmodf(secCount, 1.f) < 0.01f) printf("fps = %d        \n", (int)fps);   /* Only updates once every second (Assuming your fps isn't absolutely horrible) */
+        else printf("\n");
+        printf("fps currently = %d        \n", (int)fps);                           /* Updates after every frame */
 
         A += 1.4f * deltaTime;
         B += 0.7f * deltaTime;

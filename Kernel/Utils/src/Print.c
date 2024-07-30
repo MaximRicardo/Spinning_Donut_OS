@@ -107,6 +107,8 @@ newLine - if true, print a new line after the string, else do not
 */
 static int putsWithNewLineOption(char* str, bool newLine) {
 
+    if (str == NULL) return;
+
     size_t i;   /* Index in the string */
     
     i = 0;
@@ -242,8 +244,13 @@ void printf(char* str, ...) {
 
     size_t i;
 
-    va_list ptr;
-    va_start(ptr, str);
+    va_list argPtr;
+    va_start(argPtr, str);
+
+    if (str == NULL) {
+        va_end(argPtr);
+        return;
+    }
 
     /* Read the string */
     for (i = 0; str[i] != '\0'; i++) {
@@ -253,54 +260,54 @@ void printf(char* str, ...) {
 
             if (str[i] == 's') {
                 /* Print the string using puts without a new line */
-                putsWithNewLineOption(va_arg(ptr, char*), false);
+                putsWithNewLineOption(va_arg(argPtr, char*), false);
             }
             else if (str[i] == 'c') {
-                PrintCharacter(va_arg(ptr, int));       /* char gets promoted to int */
+                PrintCharacter(va_arg(argPtr, int));    /* char gets promoted to int */
             }
             else if (str[i] == 'u') {
                 /* Print an unsigned integer converted to a string */
-                PrintDecimalUnsignedInt(va_arg(ptr, unsigned int));
+                PrintDecimalUnsignedInt(va_arg(argPtr, unsigned int));
             }
             else if (str[i] == 'd') {
                 /* Print an integer converted to a string */
-                PrintDecimalInt(va_arg(ptr, int));
+                PrintDecimalInt(va_arg(argPtr, int));
             }
             else if (str[i] == 'x') {
                 /* Print an integer converted to a lowercase hex string */
-                PrintHexInt(va_arg(ptr, unsigned int), false);
+                PrintHexInt(va_arg(argPtr, unsigned int), false);
             }
             else if (str[i] == 'X') {
                 /* Print an integer converted to an uppercase hex string */
-                PrintHexInt(va_arg(ptr, unsigned int), true);
+                PrintHexInt(va_arg(argPtr, unsigned int), true);
             }
             else if (str[i] == 'z' && str[i+1] == 'u') {
                 /* Assume size_t to be the same width as int. If so, then size_t can be printed like a regular unsigned int */
-                PrintDecimalUnsignedInt(va_arg(ptr, size_t));
+                PrintDecimalUnsignedInt(va_arg(argPtr, size_t));
                 /* Skip past the 'z' character, so the 'u' character can be skipped aswell when the loop continues */
                 ++i;
             }
             else if (str[i] == 'z' && str[i+1] == 'd') {
                 /* Assume size_t to be the same width as int. If so, then size_t can be printed like a regular int */
-                PrintDecimalInt((int)va_arg(ptr, size_t));
+                PrintDecimalInt((int)va_arg(argPtr, size_t));
                 /* Skip past the 'z' character, so the 'u' character can be skipped aswell when the loop continues */
                 ++i;
             }
             else if (str[i] == 'z' && str[i+1] == 'x') {
                 /* Assume size_t to be the same width as int. If so, then size_t can be printed like a regular int */
-                PrintHexInt(va_arg(ptr, size_t), false);
+                PrintHexInt(va_arg(argPtr, size_t), false);
                 /* Skip past the 'z' character, so the 'u' character can be skipped aswell when the loop continues */
                 ++i;
             }
             else if (str[i] == 'z' && str[i+1] == 'X') {
                 /* Assume size_t to be the same width as int. If so, then size_t can be printed like a regular int */
-                PrintHexInt(va_arg(ptr, size_t), true);
+                PrintHexInt(va_arg(argPtr, size_t), true);
                 /* Skip past the 'z' character, so the 'u' character can be skipped aswell when the loop continues */
                 ++i;
             }
             else if (str[i] == 'p') {
                 /* Due to the flat memory model of the OS, a pointer is always 32 bits. So, assuming int is 32 bits, a pointer can be printed like a regular unsigned int */
-                PrintHexInt((unsigned int)va_arg(ptr, void*), true);
+                PrintHexInt((unsigned int)va_arg(argPtr, void*), true);
             }
             else if (str[i] == '%') {
                 /* Print a percent symbol */
@@ -313,7 +320,7 @@ void printf(char* str, ...) {
 
     }
     
-    va_end(ptr);
+    va_end(argPtr);
 
 }
 
