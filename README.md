@@ -1,6 +1,6 @@
-# Donut OS
+# Spinning Donut OS
 
-Donut OS is an operating system designed for specifically one thing. A spinning donut.
+Spinning Donut OS is an operating system designed for specifically one thing. A spinning donut.
 
 build.sh will create a binary file called OS.bin in the Binaries folder, which will contain the bootable operating system.
 run.sh will use QEMU to emulate the operating system.
