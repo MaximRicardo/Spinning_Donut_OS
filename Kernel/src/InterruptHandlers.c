@@ -20,7 +20,7 @@ intAddress  - The location in memory the cpu was executing at when the interrupt
 */
 void InterruptDefaultHandler(void* intAddress) {
 
-    printf("Exception encountered at address 0x%p.\n", intAddress);
+    kPrintf("Exception encountered at address 0x%p.\n", intAddress);
 
 }
 
@@ -29,7 +29,7 @@ intAddress  - The location in memory the cpu was executing at when the interrupt
 */
 void Interrupt0Handler(void* intAddress) {
 
-    printf("Error: Divide Error exception encountered at address 0x%p.\n", intAddress);
+    kPrintf("Error: Divide Error exception encountered at address 0x%p.\n", intAddress);
 
 }
 
@@ -44,12 +44,12 @@ void Interrupt32Handler() {
 
 void Interrupt33Handler() {
 
-    /* printf("Keyboard interrupt!\n"); */
+    /* kPrintf("Keyboard interrupt!\n"); */
     
     if (inb(0x64) & 0x01) {
         /*
         int scanCode = inb(0x60);
-        printf("scan code = %d\n", scanCode); */
+        kPrintf("scan code = %d\n", scanCode); */
         inb(0x60);
     }
 

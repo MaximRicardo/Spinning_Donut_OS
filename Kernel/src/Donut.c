@@ -162,14 +162,14 @@ void Donut() {
 
         SetCursorPos(cursorStartX, cursorStartY);
         for (y = 0; y < 22; y++) {
-            for (x = 0; x < 70; x++) printf("%c", b[70*y+x]);
-            printf("\n");
+            for (x = 0; x < 70; x++) kPrintf("%c", b[70*y+x]);
+            kPrintf("\n");
         }
 
-        puts("Donut");
-        if (fmodf(secCount, 1.f) < 0.01f) printf("fps = %d        \n", (int)fps);   /* Only updates once every second (Assuming your fps isn't absolutely horrible) */
-        else printf("\n");
-        printf("fps currently = %d        \n", (int)fps);                           /* Updates after every frame */
+        kPuts("Donut");
+        if (fmodf(secCount, 1.f) < 0.01f) kPrintf("fps = %d        \n", (int)fps);   /* Only updates once every second (Assuming your fps isn't absolutely horrible) */
+        else kPrintf("\n");
+        kPrintf("fps currently = %d        \n", (int)fps);                           /* Updates after every frame */
 
         A += 1.4f * deltaTime;
         B += 0.7f * deltaTime;

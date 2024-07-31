@@ -114,18 +114,18 @@ void MemoryMap_Print() {
 
     size_t i;
 
-    printf("Number of entries = %u\n", nMemoryMapEntries);
+    kPrintf("Number of entries = %u\n", nMemoryMapEntries);
 
     for (i = 0; i < nMemoryMapEntries; i++) {
 
-        printf("Region at 0x%x-0x%x. Size = 0x%x. Type = ", memoryMap[i].baseLo, memoryMap[i].baseLo+memoryMap[i].lengthLo-1, memoryMap[i].lengthLo);
+        kPrintf("Region at 0x%x-0x%x. Size = 0x%x. Type = ", memoryMap[i].baseLo, memoryMap[i].baseLo+memoryMap[i].lengthLo-1, memoryMap[i].lengthLo);
 
-        if (memoryMap[i].type == 1) puts("\"Free\"");
-        else if (memoryMap[i].type == 2) puts("\"Reserved\"");
-        else if (memoryMap[i].type == 3) puts("\"ACPI Reclaimable\"");
-        else if (memoryMap[i].type == 4) puts("\"ACPI NVS\"");
-        else if (memoryMap[i].type == 5) puts("\"Bad Memory\"");
-        else printf("\"Undefined\": %d\n", memoryMap[i].type);
+        if (memoryMap[i].type == 1) kPuts("\"Free\"");
+        else if (memoryMap[i].type == 2) kPuts("\"Reserved\"");
+        else if (memoryMap[i].type == 3) kPuts("\"ACPI Reclaimable\"");
+        else if (memoryMap[i].type == 4) kPuts("\"ACPI NVS\"");
+        else if (memoryMap[i].type == 5) kPuts("\"Bad Memory\"");
+        else kPrintf("\"Undefined\": %d\n", memoryMap[i].type);
 
     }
 
