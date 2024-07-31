@@ -3,8 +3,8 @@ global _start
 
 [bits 32]
 [extern KernelMain]
-[extern puts]
-[extern printf]
+[extern kPuts]
+[extern kPrintf]
 [extern MemoryMap_Load]
 [extern MemoryMap_GetTopOfLargestFreeEntry]
 
@@ -85,7 +85,7 @@ SSENotAvailableStr: db "SSE not available. This OS requires that the SSE is avai
 SSENotAvailable:
 
     push SSENotAvailableStr
-    call puts
+    call kPuts
     add esp, 4
     
     jmp HaltLoop

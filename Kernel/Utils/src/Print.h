@@ -12,6 +12,7 @@ void GetCursorPos(unsigned int* x, unsigned int* y);
 /* Moves the text cursor to the specified coordinates */
 void SetCursorPos(unsigned int x, unsigned int y);
 
-int puts(char* str);
+int kPuts(char* str);
 
-void printf(char* str, ...);
+/* Disabled the __attribute__ macro because it caused unfixable warnings due to this function not fully supporting every printf format */
+void kPrintf(char* str, ...); /*__attribute__((format (printf, 1, 2)))*/

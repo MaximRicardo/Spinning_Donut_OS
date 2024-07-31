@@ -26,13 +26,13 @@ void KernelMain(size_t stackStart) {
  
     __asm__ volatile ("sti");   /* Enable interrupts again */
 
-    printf("Stack starts at 0x%x\n", stackStart);
+    kPrintf("Stack starts at 0x%x\n", stackStart);
 
     MemoryMap_Load(&nMemoryMapEntries);       /* Load in the memory map again, this time at the new stack */
 
     MemoryMap_Print();
 
-    puts("\n\n");
+    kPuts("\n\n");
     Donut();
 
     return;

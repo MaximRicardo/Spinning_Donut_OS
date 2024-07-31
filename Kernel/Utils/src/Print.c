@@ -105,7 +105,7 @@ str - string to be printed
 newLine - if true, print a new line after the string, else do not
 
 */
-static int putsWithNewLineOption(char* str, bool newLine) {
+static int kPutsWithNewLineOption(char* str, bool newLine) {
 
     size_t i;   /* Index in the string */
     
@@ -125,9 +125,9 @@ static int putsWithNewLineOption(char* str, bool newLine) {
 
 }
 
-int puts(char* str) {
+int kPuts(char* str) {
 
-    return putsWithNewLineOption(str, true);
+    return kPutsWithNewLineOption(str, true);
 
 }
 
@@ -165,7 +165,7 @@ static void PrintDecimalUnsignedInt(unsigned int val) {
         --i;
     }
 
-    putsWithNewLineOption(flippedStr, false);
+    kPutsWithNewLineOption(flippedStr, false);
     
 }
 
@@ -236,11 +236,11 @@ static void PrintHexInt(unsigned int val, bool upperCase) {
         --i;
     }
 
-    putsWithNewLineOption(flippedStr, false);
+    kPutsWithNewLineOption(flippedStr, false);
 
 }
 
-void printf(char* str, ...) {
+void kPrintf(char* str, ...) {
 
     size_t i;
 
@@ -259,8 +259,8 @@ void printf(char* str, ...) {
             ++i;    /* The '%' symbol can safely be skipped */
 
             if (str[i] == 's') {
-                /* Print the string using puts without a new line */
-                putsWithNewLineOption(va_arg(argPtr, char*), false);
+                /* Print the string using kPuts without a new line */
+                kPutsWithNewLineOption(va_arg(argPtr, char*), false);
             }
             else if (str[i] == 'c') {
                 PrintCharacter(va_arg(argPtr, int));    /* char gets promoted to int */
