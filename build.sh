@@ -22,3 +22,16 @@ nasm Boot/Zeroes.asm -f bin -o Binaries/Zeroes.bin
 i386-elf-ld -o Binaries/FullKernel.bin -Ttext 0x1000 Binaries/KernelEntry.o Binaries/Kernel.o Binaries/IDT.o Binaries/PIC.o Binaries/Interrupts.o Binaries/InterruptHandlers.o Binaries/Print.o Binaries/Chars.o Binaries/LowLevelIO.o Binaries/MemFuncs.o Binaries/MemoryMap.o Binaries/Donut.o --oformat binary
 
 cat Binaries/Boot.bin Binaries/FullKernel.bin Binaries/Zeroes.bin > Binaries/OS.bin
+
+dd if=/dev/zero of=floppy.img bs=1024 count=1440
+dd if=Binaries/OS.bin of=floppy.img seek=0 count=20 conv=notrunc
+
+mkdir -p iso
+cp floppy.img iso/
+genisoimage -quiet -V 'OS' -input-charset iso8859-1 -o OS.iso -b floppy.img \
+    -hide floppy.img iso/
+
+mv OS.iso iso/
+
+#rm iso/floppy.img
+rm floppy.img

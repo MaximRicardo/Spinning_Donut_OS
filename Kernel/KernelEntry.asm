@@ -53,6 +53,8 @@ _start:
 
     ;Assign esp to that address, moving the entire stack to that area. This means all previous local variables are lost
     mov esp, eax
+    ;Also make sure the stack pointer is alligned to 4 bytes
+    and esp, -16
 
 
 StackMoved:

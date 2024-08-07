@@ -10,13 +10,13 @@ DATA_SEG equ GDT_DataDescriptor - GDT_Start
 
 segment .text
 
-    mov [BOOT_DISK], dl
-    
     ;Setup the segment registers
     xor ax, ax
     mov es, ax
     mov ds, ax
-    
+
+    mov [BOOT_DISK], dl
+        
     ;Setup the stack
     mov bp, 0x8000
     mov sp, bp
